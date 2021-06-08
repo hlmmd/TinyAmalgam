@@ -1,3 +1,9 @@
+# scons files
+.sconsign.dblite
+
+# unittest
+*_unittest
+
 # Prerequisites
 *.d
 
