@@ -1,1 +1,3 @@
+Import('Env')
+Env = Env.Clone()
 SConscript('structure/SConscript')

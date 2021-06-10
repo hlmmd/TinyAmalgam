@@ -1,4 +1,4 @@
-env = Environment()
-env.Library('structure', ['skiplist.cc'])
-# env.Append(LIBS = ['structure'])
-env.Program('skiplist_unittest', source=['skiplist_unittest.cc'])
+Import ('Env')
+Env = Env.Clone()
+Env.Library('structure', ['skiplist.cc'])
+Env.Program('skiplist_unittest', source=['skiplist_unittest.cc'])
