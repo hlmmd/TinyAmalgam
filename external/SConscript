@@ -1,4 +1,4 @@
 Import('Env')
 SConscript('spdlog/SConscript',exports=['Env'])
 SConscript('gtest/SConscript',exports=['Env'])
-
+SConscript('gflags/SConscript',exports=['Env'])
