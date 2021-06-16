@@ -2,6 +2,8 @@ import os
 import sys
 Env = Environment()
 
+# Env.Append(CCFLAGS = ['-g'])
+
 currentPath = os.path.abspath('.')
 
 Env.Append(CPPPATH=[currentPath, currentPath + '/external/spdlog/include'])
