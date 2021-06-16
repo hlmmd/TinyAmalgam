@@ -9,13 +9,52 @@
 ================================================================*/
 
 #include "skiplist.h"
+#include <gtest/gtest.h>
 #include <iostream>
+#include <map>
 using namespace std;
 using namespace hl;
 using namespace hl::common;
-int main()
+
+TEST(SkipList, ALL)
 {
-    SkipNode node;
-    cout << "hello world!" << endl;
-    return 0;
+    SkipList<int, int> skipList;
+    map<int, int> mymap;
+    Random rand(0xffff);
+
+    const int N = 1e6;
+
+    for (int i = 0; i < N; i++)
+    {
+        int v = rand.Next() % N;
+        mymap[v] = i;
+        skipList.Insert(v, i);
+    }
+    for (int i = 0; i < N; i++)
+    {
+        ASSERT_EQ(mymap.count(i), skipList.Find(i));
+    }
+    for (int i = 0; i < N / 10; i++)
+    {
+        int v = rand.Next() % N;
+        if (mymap.count(v))
+        {
+            mymap.erase(v);
+            skipList.Erase(v);
+        }
+    }
+    for (int v = 0; v < N; v++)
+    {
+        ASSERT_EQ(mymap.count(v), skipList.Find(v));
+        if (skipList.Find(v))
+        {
+            ASSERT_EQ(mymap.at(v), skipList.At(v));
+        }
+    }
+}
+
+int main(int argc, char** argv)
+{
+    testing::InitGoogleTest(&argc, argv);
+    return RUN_ALL_TESTS();
 }
