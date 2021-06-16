@@ -1,4 +1,6 @@
 Import ('Env')
 Env = Env.Clone()
-Env.Library('structure', ['skiplist.cc'])
-Env.Program('skiplist_unittest', source=['skiplist_unittest.cc'])
+# Env.Library('structure', ['skiplist.cc'])
+Env.Append(CCFLAGS = ['-g'])
+Env.Program('skiplist_unittest', source=['skiplist_unittest.cc'], LIBS=['spdlog','gtest','pthread'])
+# Env.Program('skiplist_unittest', source=['skiplist_unittest.cc'], LIBS=['gtest','pthread'])

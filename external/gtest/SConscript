@@ -1,0 +1,6 @@
+Import('Env')
+
+build_env = Env.Clone()
+
+objs = build_env.Object(["src/gtest-all.cc", "src/gtest_main.cc"])
+Env.Library('gtest', objs, CPPPATH=['include', '.'])

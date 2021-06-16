@@ -1,0 +1,20 @@
+Import('Env')
+Env = Env.Clone()
+import os
+
+obj_files = [
+    'src/async.cpp',
+    'src/cfg.cpp',
+    'src/color_sinks.cpp',
+    'src/file_sinks.cpp',
+    'src/fmt.cpp',
+    'src/spdlog.cpp',
+    'src/stdout_sinks.cpp'
+]
+
+# currentPath = os.path.abspath('.')
+# Env.Append(CPP3RDPARTYPATH=currentPath)
+Env.Append(CPPPATH=['./include'])
+Env.Append(CPPDEFINES=['SPDLOG_COMPILED_LIB'])
+Env.Library('spdlog', Env.Object(obj_files), SYSLIBDEPS=['pthread'])
+#Env.Install('spdlog')
