@@ -10,14 +10,19 @@
 
 #include "skiplist.h"
 #include <gtest/gtest.h>
+#include <glog/logging.h>
+#include <gflags/gflags.h>
 #include <iostream>
 #include <map>
 using namespace std;
 using namespace hl;
 using namespace hl::common;
 
+DEFINE_string(debug_str,"hello world","debug str");
+
 TEST(SkipList, ALL)
 {
+    LOG(INFO) << "test SkipList " << FLAGS_debug_str;
     SkipList<int, int> skipList;
     map<int, int> mymap;
     Random rand(0xffff);
@@ -56,5 +61,6 @@ TEST(SkipList, ALL)
 int main(int argc, char** argv)
 {
     testing::InitGoogleTest(&argc, argv);
+    google::ParseCommandLineFlags(&argc, &argv, true);
     return RUN_ALL_TESTS();
 }
