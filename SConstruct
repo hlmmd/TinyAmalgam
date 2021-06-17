@@ -16,6 +16,9 @@ Env.Append(LIBPATH =[currentPath + '/external/gtest'])
 Env.Append(CPPPATH=[currentPath + '/external/gflags/include'])
 Env.Append(LIBPATH =[currentPath + '/external/gflags'])
 
+Env.Append(CPPPATH=[currentPath + '/external/glog/include'])
+Env.Append(LIBPATH =[currentPath + '/external/glog'])
+
 Env.Append(CCCFLAGS=['-g', '-O3', '-Wall'])
 
 Export('Env')

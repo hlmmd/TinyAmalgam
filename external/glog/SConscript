@@ -1,0 +1,20 @@
+import os
+Import('Env')
+Env = Env.Clone()
+
+# 这里因为通过cmake产生了一些头文件，scons应该暂不支持？所以直接用bash命令完成
+if not os.path.exists('build'):
+	os.system('mkdir build')
+os.system('cd build && cmake .. && cd .. ')
+os.system('rm -rf include')
+os.system('mkdir include')
+os.system('mv build/glog include/glog')
+os.system('mv build/config.h include/glog/')
+os.system('cp src/glog/log_severity.h include/glog/')
+
+obj_files = [
+    'src/logging.cc',
+]
+
+Env.Append(CPPPATH=['include/glog','include','src'])
+Env.Library('glog', Env.Object(obj_files) )
