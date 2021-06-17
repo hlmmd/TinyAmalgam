@@ -1,6 +1,12 @@
 # TinyAmalgam
 tiny amalgam
 
+## INSTALL
+
+```bash
+sudo apt install libunwind-dev libgflags-dev libgtest-dev libgoogle-glog-dev
+```
+
 ## 编译时内存炸了
 
 开启swap

@@ -9,12 +9,14 @@ currentPath = os.path.abspath('.')
 Env.Append(CPPPATH=[currentPath, currentPath + '/external/spdlog/include'])
 Env.Append(LIBPATH =[currentPath + '/external/spdlog'])
 
+# gtest 是个奇葩，apt install libgtest-dev 只是下载source code，没有编译好的库文件
 Env.Append(CPPPATH=[currentPath + '/external/gtest/include'])
 Env.Append(CPPPATH=[currentPath + '/external/gtest'])
 Env.Append(LIBPATH =[currentPath + '/external/gtest'])
 
-Env.Append(CPPPATH=[currentPath + '/external/gflags/include'])
-Env.Append(LIBPATH =[currentPath + '/external/gflags'])
+# 改用 apt 安装
+# Env.Append(CPPPATH=[currentPath + '/external/gflags/include'])
+# Env.Append(LIBPATH =[currentPath + '/external/gflags'])
 
 # 检查是否安装 gflags
 # try:
@@ -22,8 +24,8 @@ Env.Append(LIBPATH =[currentPath + '/external/gflags'])
 # except:
 #     print (Env['CPPPATH'])
 
-Env.Append(CPPPATH=[currentPath + '/external/glog/include'])
-Env.Append(LIBPATH =[currentPath + '/external/glog'])
+# Env.Append(CPPPATH=[currentPath + '/external/glog/include'])
+# Env.Append(LIBPATH =[currentPath + '/external/glog'])
 
 # 检查是否安装 glog
 # try:
