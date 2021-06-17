@@ -14,6 +14,12 @@ os.system('cp src/glog/log_severity.h include/glog/')
 
 obj_files = [
     'src/logging.cc',
+    'src/demangle.cc',
+    'src/raw_logging.cc',
+    'src/utilities.cc',
+    'src/symbolize.cc',
+    'src/vlog_is_on.cc',
+    'src/signalhandler.cc',
 ]
 
 Env.Append(CPPPATH=['include/glog','include','src'])

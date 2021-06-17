@@ -1,3 +1,12 @@
 Import ('Env')
 Env = Env.Clone()
-Env.Program('skiplist_unittest', source=['skiplist_unittest.cc'], LIBS=['spdlog','gtest','pthread','gflags'])
+
+deplibs = [
+    'spdlog',
+    'glog',
+    'gtest',
+    'pthread',
+    'gflags'
+]
+
+Env.Program('skiplist_unittest', source=['skiplist_unittest.cc'], LIBS=deplibs)

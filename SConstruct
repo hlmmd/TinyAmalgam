@@ -16,12 +16,26 @@ Env.Append(LIBPATH =[currentPath + '/external/gtest'])
 Env.Append(CPPPATH=[currentPath + '/external/gflags/include'])
 Env.Append(LIBPATH =[currentPath + '/external/gflags'])
 
+# 检查是否安装 gflags
+# try:
+#     Env.ParseConfig("pkg-config gflags --cflags --libs")
+# except:
+#     print (Env['CPPPATH'])
+
 Env.Append(CPPPATH=[currentPath + '/external/glog/include'])
 Env.Append(LIBPATH =[currentPath + '/external/glog'])
+
+# 检查是否安装 glog
+# try:
+#     Env.ParseConfig("pkg-config glog --cflags --libs")
+# except:
+#     os.system('cd external/glog && rm -rf build && mkdir build && cd build && cmake .. ')
+#     os.system('cd external/glog/build && make -j && sudo make install')
+#     os.system('cd '+ currentPath)
+#     print (Env['CPPPATH'])
 
 Env.Append(CCCFLAGS=['-g', '-O3', '-Wall'])
 
 Export('Env')
 SConscript('common/SConscript', exports=['Env'])
 SConscript('external/SConscript', exports=['Env'])
-
