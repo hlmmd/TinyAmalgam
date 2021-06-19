@@ -38,6 +38,10 @@ Env.Append(LIBPATH =[currentPath + '/external/gtest'])
 
 Env.Append(CCCFLAGS=['-g', '-O3', '-Wall'])
 
+Env.Append(CPPPATH=[currentPath + '/algorithm'])
+Env.Append(LIBPATH =[currentPath + '/algorithm'])
+
 Export('Env')
 SConscript('common/SConscript', exports=['Env'])
 SConscript('external/SConscript', exports=['Env'])
+SConscript('algorithm/SConscript', exports=['Env'])

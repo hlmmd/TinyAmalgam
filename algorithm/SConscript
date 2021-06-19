@@ -1,0 +1,18 @@
+Import ('Env')
+Env = Env.Clone()
+deplibs = [
+    'spdlog',
+    'glog',
+    'gtest',
+    'pthread',
+    'gflags'
+]
+
+objfiles = [
+    'sort.cc'
+]
+
+Env.Library('algorithm', Env.Object(objfiles))
+deplibs.append('algorithm')
+
+Env.Program('sort_unittest', source=['sort_unittest.cc'], LIBS=deplibs)
