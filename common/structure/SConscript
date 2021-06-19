@@ -10,3 +10,4 @@ deplibs = [
 ]
 
 Env.Program('skiplist_unittest', source=['skiplist_unittest.cc'], LIBS=deplibs)
+Env.Program('linklist_unittest', source=['linklist_unittest.cc'], LIBS=deplibs)
