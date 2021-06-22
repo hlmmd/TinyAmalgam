@@ -9,7 +9,8 @@ deplibs = [
 ]
 
 objfiles = [
-    'sort.cc'
+    'sort.cc',
+    'array.cc'
 ]
 
 Env.Library('algorithm', Env.Object(objfiles))
