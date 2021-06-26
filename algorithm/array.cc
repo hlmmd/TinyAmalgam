@@ -8,6 +8,7 @@
 *
 ================================================================*/
 #include "array.h"
+#include <functional>
 #include <glog/logging.h>
 #include <unordered_map>
 namespace hl
@@ -57,7 +58,37 @@ bool PredictTheWinner(std::vector<int>& nums)
     return 2 * dp[0][n - 1] >= prefixSum.back();
 }
 
+bool GraghisTree(int n, std::vector<std::vector<int>> &edges)
+{
+    vector<int> v(n);
+    for (int i = 0; i < n; i++)
+        v[i] = i;
+
+    std::function<int(int)> find = [&v, &find](int x)
+    {
+        if (x == v[x])
+            return x;
+        return find(v[x]);
+    };
+
+    if (n < 1 || edges.size() == 0)
+        return false;
+    if (edges.size() + 1 != n)
+        return false;
+
+    for (auto& edge : edges)
+    {
+        int v1 = find(edge[0]);
+        int v2 = find(edge[1]);
+        v[v1] = v2;
+    }
+    int count = 0;
+    for (int i = 0; i < n; i++)
+        if (v[i] == i)
+            count++;
+    return count == 1;
+}
+
 } // namespace array
 } // namespace algorithm
 } // namespace hl
-

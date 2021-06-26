@@ -28,9 +28,11 @@ int findMaxLength(std::vector<int>& nums);
 // 两个人玩游戏，依次从数组的两端取走一个数，最后sum大者胜，返回先手是否胜利(sum相同算先手胜利)
 bool PredictTheWinner(std::vector<int>& nums);
 
+// 判断有向无环图是否构成树
+bool GraghisTree(int n, std::vector<std::vector<int>>& edges);
+
 } // namespace array
 } // namespace algorithm
 } // namespace hl
 
 #endif
-

@@ -23,6 +23,15 @@ TEST(ARRAY, PredictTheWinner)
     ASSERT_EQ(true, hl::algorithm::array::PredictTheWinner(nums));
 }
 
+TEST(GRAGH, GRAGH_IS_TREE)
+{
+    int n = 5;
+    vector<vector<int>> edges = {{0, 1}, {1, 2}, {2, 3}, {1, 3}, {1, 4}};
+    ASSERT_EQ(false, hl::algorithm::array::GraghisTree(n, edges));
+    edges = {{0, 1}, {0, 2}, {0, 3}, {1, 4}};
+    ASSERT_EQ(true, hl::algorithm::array::GraghisTree(n, edges));
+}
+
 TEST(SORT, WTF)
 {
 }
@@ -33,4 +42,3 @@ int main(int argc, char** argv)
     google::ParseCommandLineFlags(&argc, &argv, true);
     return RUN_ALL_TESTS();
 }
-
