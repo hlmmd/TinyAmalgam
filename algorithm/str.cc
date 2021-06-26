@@ -1,4 +1,3 @@
-
 #include "str.h"
 #include <vector>
 namespace hl
@@ -10,8 +9,9 @@ namespace string
 
 int SubStr(const std::string& text, const std::string& pattern)
 {
-    auto getNext = [](const std::string& pattern) -> std::vector<int>
-    {
+    if (pattern.size() == 0)
+        return 0;
+    auto getNext = [](const std::string& pattern) -> std::vector<int> {
         int n = pattern.size();
         std::vector<int> next(n, 0);
         int prefixlen = 0;
@@ -43,13 +43,15 @@ int SubStr(const std::string& text, const std::string& pattern)
         {
             j++;
             if (j == pattern.size())
-                return i - j;
+                return i - j + 1;
         }
         else
         {
-            j = next[j];
             if (j != 0)
+            {
+                j = next[j - 1];
                 i--;
+            }
         }
     }
     return -1;
@@ -57,3 +59,4 @@ int SubStr(const std::string& text, const std::string& pattern)
 } // namespace string
 } // namespace algorithm
 } // namespace hl
+
