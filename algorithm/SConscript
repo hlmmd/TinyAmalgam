@@ -17,4 +17,4 @@ objfiles = [
 Env.Library('algorithm', Env.Object(objfiles))
 deplibs.append('algorithm')
 
-Env.Program('sort_unittest', source=['sort_unittest.cc'], LIBS=deplibs)
+Env.Program('alg_unittest', source=['alg_unittest.cc'], LIBS=deplibs)

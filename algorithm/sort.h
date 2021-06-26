@@ -12,6 +12,7 @@
 #define ALGORITHM_SORT_H
 
 #include <list>
+#include <vector>
 
 namespace hl
 {
@@ -19,12 +20,15 @@ namespace hl
 namespace algorithm
 {
 
-namespace SortHelper
+namespace sort
 {
 
-} // namespace SortHelper
+void sortColors(std::vector<int>& nums);
+
+} // namespace sort
 
 } // namespace algorithm
 
 } // namespace hl
 #endif //SORT_H
+
