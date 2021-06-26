@@ -24,8 +24,13 @@ namespace array
 // 一个由且仅由01组成的数组，求最长的子数组，使得0和1的数量一样多
 int findMaxLength(std::vector<int>& nums);
 
+// leetcode 486 https://leetcode.com/problems/predict-the-winner/
+// 两个人玩游戏，依次从数组的两端取走一个数，最后sum大者胜，返回先手是否胜利(sum相同算先手胜利)
+bool PredictTheWinner(std::vector<int>& nums);
+
 } // namespace array
 } // namespace algorithm
 } // namespace hl
 
 #endif
+

@@ -1,5 +1,6 @@
-Import ('Env')
+Import('Env')
 Env = Env.Clone()
+
 deplibs = [
     'spdlog',
     'glog',
@@ -14,7 +15,10 @@ objfiles = [
     'str.cc'
 ]
 
-Env.Library('algorithm', Env.Object(objfiles))
-deplibs.append('algorithm')
+TARGET_LIB = 'algorithm'
+Env.Library(TARGET_LIB, Env.Object(objfiles))
+
+deplibs.insert(0, TARGET_LIB)
 
 Env.Program('alg_unittest', source=['alg_unittest.cc'], LIBS=deplibs)
+
