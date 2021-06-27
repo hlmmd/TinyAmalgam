@@ -60,6 +60,9 @@ bool PredictTheWinner(std::vector<int>& nums)
 
 bool GraghisTree(int n, std::vector<std::vector<int>> &edges)
 {
+    if (n < 1 || edges.size() + 1 != n)
+        return false;
+
     vector<int> v(n);
     for (int i = 0; i < n; i++)
         v[i] = i;
@@ -70,11 +73,6 @@ bool GraghisTree(int n, std::vector<std::vector<int>> &edges)
             return x;
         return find(v[x]);
     };
-
-    if (n < 1 || edges.size() == 0)
-        return false;
-    if (edges.size() + 1 != n)
-        return false;
 
     for (auto& edge : edges)
     {
