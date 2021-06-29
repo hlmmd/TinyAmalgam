@@ -11,13 +11,15 @@
 #ifndef ALGORITHM_ARRAY_H
 #define ALGORITHM_ARRAY_H
 
+#include <cstdint>
+#include <deque>
+#include <queue>
 #include <vector>
-
 namespace hl
 {
 namespace algorithm
 {
-namespace array
+namespace array_alg
 {
 
 // leetcode 525 https://leetcode.com/problems/contiguous-array/
@@ -31,7 +33,13 @@ bool PredictTheWinner(std::vector<int>& nums);
 // 判断有向无环图是否构成树
 bool GraghisTree(int n, std::vector<std::vector<int>>& edges);
 
-} // namespace array
+// PONY 面试题
+//  双端队列，长度n(100000)，每次队首取出两个数，将小的放回队首，大的放到队尾，问m(int64)次后队尾是？
+int DequeGetM(std::deque<int>& q, int64_t m);
+
+// 一个矩阵，里面p是人，w是墙，空格是空的，e是出口 保证所有人都能出来，返回每个人走出来的步数，出口唯一
+std::vector<int> Escape(std::vector<std::vector<char>>& matrix, const std::pair<int, int>& end);
+} // namespace array_alg
 } // namespace algorithm
 } // namespace hl
 

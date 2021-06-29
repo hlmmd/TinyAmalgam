@@ -15,7 +15,7 @@ namespace hl
 {
 namespace algorithm
 {
-namespace array
+namespace array_alg
 {
 
 using namespace std;
@@ -58,7 +58,7 @@ bool PredictTheWinner(std::vector<int>& nums)
     return 2 * dp[0][n - 1] >= prefixSum.back();
 }
 
-bool GraghisTree(int n, std::vector<std::vector<int>> &edges)
+bool GraghisTree(int n, std::vector<std::vector<int>>& edges)
 {
     if (n < 1 || edges.size() + 1 != n)
         return false;
@@ -87,6 +87,78 @@ bool GraghisTree(int n, std::vector<std::vector<int>> &edges)
     return count == 1;
 }
 
-} // namespace array
+int DequeGetM(std::deque<int>& q, int64_t m)
+{
+    int n = q.size();
+    if (n == 0)
+        return -1;
+    if (n == 1)
+        return q.front();
+
+    m = m % (n - 1);
+    for (int i = 0; i < m; i++)
+    {
+        int t1 = q.front();
+        q.pop_front();
+        int t2 = q.front();
+        q.pop_front();
+        if (t1 > t2)
+            swap(t1, t2);
+        q.push_front(t1);
+        q.push_back(t2);
+    }
+    return q.front();
+}
+
+vector<int> Escape(vector<vector<char>>& matrix, const pair<int, int>& end)
+{
+    vector<int> ret;
+    int m = matrix.size();
+    if (m < 0)
+        return ret;
+    int n = matrix[0].size();
+    if (n == 0)
+        return ret;
+
+    vector<vector<bool>> visited(m, vector<bool>(n, false));
+    queue<pair<int, int>> bfsQueue;
+    bfsQueue.push(end);
+    visited[end.first][end.second] = true;
+    int count = 0;
+    while (!bfsQueue.empty())
+    {
+        int N = bfsQueue.size();
+        for (int i = 0; i < N; i++)
+        {
+            auto p = bfsQueue.front();
+            bfsQueue.pop();
+            int x = p.first;
+            int y = p.second;
+            if (matrix[x][y] == 'w')
+                continue;
+            if (matrix[x][y] == 'p')
+            {
+                ret.push_back(count);
+            }
+
+            vector<pair<int, int>> dir = {{0, 1}, {0, -1}, {-1, 0}, {1, 0}};
+            for (auto d : dir)
+            {
+                int nx = x + d.first;
+                int ny = y + d.second;
+                if (nx >= 0 && nx < m && ny >= 0 && ny < n && !visited[nx][ny])
+                {
+                    visited[nx][ny] = true;
+                    bfsQueue.push({nx, ny});
+                }
+            }
+        }
+        count++;
+    }
+
+    return ret;
+}
+
+} // namespace array_alg
 } // namespace algorithm
 } // namespace hl
