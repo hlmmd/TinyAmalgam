@@ -8,6 +8,7 @@
 *
 ================================================================*/
 #include "array.h"
+#include <algorithm>
 #include <functional>
 #include <glog/logging.h>
 #include <unordered_map>
@@ -67,8 +68,7 @@ bool GraghisTree(int n, std::vector<std::vector<int>>& edges)
     for (int i = 0; i < n; i++)
         v[i] = i;
 
-    std::function<int(int)> find = [&v, &find](int x)
-    {
+    std::function<int(int)> find = [&v, &find](int x) {
         if (x == v[x])
             return x;
         return find(v[x]);
@@ -159,6 +159,34 @@ vector<int> Escape(vector<vector<char>>& matrix, const pair<int, int>& end)
     return ret;
 }
 
+std::pair<int, int> GetMaxPair(std::vector<int>& nums, int k)
+{
+    sort(nums.begin(), nums.end());
+    int i = 0, j = 0;
+    int sum = 0;
+    pair<int, int> ret;
+    for (j = 0; j < nums.size(); j++)
+    {
+        sum += nums[j];
+        // 排序后一段区间要变成全相等的数，必须满足size*max<= sum + k
+        if ((j - i + 1) * nums[j] <= sum + k)
+        {
+            if (ret.second < (j - i + 1))
+            {
+                ret.second = j - i + 1;
+                ret.first = nums[j];
+            }
+        }
+        else
+        {
+            sum -= nums[i];
+            i++;
+        }
+    }
+    return ret;
+}
+
 } // namespace array_alg
 } // namespace algorithm
 } // namespace hl
+

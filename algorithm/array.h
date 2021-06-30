@@ -39,8 +39,13 @@ int DequeGetM(std::deque<int>& q, int64_t m);
 
 // 一个矩阵，里面p是人，w是墙，空格是空的，e是出口 保证所有人都能出来，返回每个人走出来的步数，出口唯一
 std::vector<int> Escape(std::vector<std::vector<char>>& matrix, const std::pair<int, int>& end);
+
+// 整数数组nums，正整数k，每次操作是让nums中任一个数+1,至多操作k次后，nums中出现次数最多值的次数
+std::pair<int, int> GetMaxPair(std::vector<int>& nums, int k);
+
 } // namespace array_alg
 } // namespace algorithm
 } // namespace hl
 
 #endif
+

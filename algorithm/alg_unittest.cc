@@ -59,9 +59,23 @@ TEST(PONY, ESCAPE)
         LOG(INFO) << ret[i];
 }
 
+TEST(PONY, GetMaxPair)
+{
+    std::vector<int> nums = {6, 3, 0, 4, 2};
+    auto ret = GetMaxPair(nums, 3);
+    ASSERT_EQ(ret.first, 4);
+    ASSERT_EQ(ret.second, 3);
+
+    nums = {2, 5, 3, 1, 3, 5, 7, 4, 2};
+    ret = GetMaxPair(nums, 6);
+    ASSERT_EQ(ret.first, 3);
+    ASSERT_EQ(ret.second, 5);
+}
+
 int main(int argc, char** argv)
 {
     testing::InitGoogleTest(&argc, argv);
     google::ParseCommandLineFlags(&argc, &argv, true);
     return RUN_ALL_TESTS();
 }
+
