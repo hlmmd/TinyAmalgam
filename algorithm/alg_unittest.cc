@@ -72,6 +72,20 @@ TEST(PONY, GetMaxPair)
     ASSERT_EQ(ret.second, 5);
 }
 
+TEST(PONY, GetMaxAndResult)
+{
+    std::vector<int> nums = {1024, 512, 512, 512, 513, 123, 45, 345, 4234, 23, 4, 23, 23, 1};
+    int maxvalue = 0;
+    for (int i = 0; i < nums.size(); i++)
+    {
+        for (int j = i + 1; j < nums.size(); j++)
+        {
+            maxvalue = max(maxvalue, nums[i] & nums[j]);
+        }
+    }
+    ASSERT_EQ(maxvalue, GetMaxAndResult(nums));
+}
+
 int main(int argc, char** argv)
 {
     testing::InitGoogleTest(&argc, argv);

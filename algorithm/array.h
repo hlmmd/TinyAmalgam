@@ -43,6 +43,9 @@ std::vector<int> Escape(std::vector<std::vector<char>>& matrix, const std::pair<
 // 整数数组nums，正整数k，每次操作是让nums中任一个数+1,至多操作k次后，nums中出现次数最多值的次数
 std::pair<int, int> GetMaxPair(std::vector<int>& nums, int k);
 
+// 整数数组nums，求两两取&得到的最大值
+int GetMaxAndResult(std::vector<int>& nums);
+
 } // namespace array_alg
 } // namespace algorithm
 } // namespace hl

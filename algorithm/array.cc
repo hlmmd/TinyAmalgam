@@ -186,6 +186,33 @@ std::pair<int, int> GetMaxPair(std::vector<int>& nums, int k)
     return ret;
 }
 
+int GetMaxAndResult(vector<int>& nums)
+{
+    std::sort(nums.begin(), nums.end(), greater<int>());
+    int start = 0, end = nums.size();
+    int maxvalue = 0;
+    for (int i = 31; i >= 1; i--)
+    {
+        int v = 1 << i;
+        int count = 0;
+        for (int i = start; i <= end; i++)
+        {
+            if ((nums[i] & v) != 0)
+                count++;
+            else
+                break;
+        }
+
+        if (count == 1)
+            start++;
+        else if (count == 2)
+            break;
+        else if (count > 2)
+            end = start + count;
+    }
+    return nums[start] & nums[start + 1];
+}
+
 } // namespace array_alg
 } // namespace algorithm
 } // namespace hl
