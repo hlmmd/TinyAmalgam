@@ -14,6 +14,7 @@
 #include <cstdint>
 #include <deque>
 #include <queue>
+#include <string>
 #include <vector>
 namespace hl
 {
@@ -46,9 +47,12 @@ std::pair<int, int> GetMaxPair(std::vector<int>& nums, int k);
 // 整数数组nums，求两两取&得到的最大值
 int GetMaxAndResult(std::vector<int>& nums);
 
+// leetcode 424
+// 给定字符串str，至多执行k次操作，每次替换其中一个字母，问能得到的最长相同连续子序列是多长
+int MaxSameSubStringAfterKReplace(std::string& str, int k);
+
 } // namespace array_alg
 } // namespace algorithm
 } // namespace hl
 
 #endif
-
