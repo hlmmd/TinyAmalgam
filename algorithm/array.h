@@ -51,6 +51,9 @@ int GetMaxAndResult(std::vector<int>& nums);
 // 给定字符串str，至多执行k次操作，每次替换其中一个字母，问能得到的最长相同连续子序列是多长
 int MaxSameSubStringAfterKReplace(std::string& str, int k);
 
+// leetcode 1922 快速幂
+long long PowWithMod(long long a, long long n, int mod = 1000000007);
+
 } // namespace array_alg
 } // namespace algorithm
 } // namespace hl

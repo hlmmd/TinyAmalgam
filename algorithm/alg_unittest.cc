@@ -36,6 +36,18 @@ TEST(ARRAY, MaxSameSubStringAfterKReplace)
     }
 }
 
+TEST(MATH, Pow)
+{
+    long long a = 20, m = 50, mod = 1e9 + 7;
+    long long res = 1;
+    for (long long i = 0; i < m; i++)
+    {
+        res *= a;
+        res %= mod;
+    }
+    ASSERT_EQ(PowWithMod(20, 50, mod), res);
+}
+
 TEST(GRAGH, GRAGH_IS_TREE)
 {
     int n = 5;

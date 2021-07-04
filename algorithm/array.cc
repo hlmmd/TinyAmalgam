@@ -232,6 +232,20 @@ int MaxSameSubStringAfterKReplace(std::string& str, int k)
     return j - i;
 }
 
+long long PowWithMod(long long a, long long n, int mod)
+{
+    long long ans = 1;
+    while (n)
+    {
+        if (n & 1)
+            ans = ans * a % mod;
+        a *= a; //a自乘
+        a %= mod;
+        n >>= 1; //n往右移一位
+    }
+    return ans;
+}
+
 } // namespace array_alg
 } // namespace algorithm
 } // namespace hl
