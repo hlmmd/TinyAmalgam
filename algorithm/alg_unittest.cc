@@ -24,6 +24,30 @@ TEST(ARRAY, PredictTheWinner)
     ASSERT_EQ(true, PredictTheWinner(nums));
 }
 
+TEST(ARRAY, MaxSameSubStringAfterKReplace)
+{
+    std::vector<std::tuple<string, int, int>> tests = {
+        {"AAAB", 1, 4},
+        {"AABABBA", 1, 4},
+        {"AAABAABBA", 3, 9}};
+    for (auto& t : tests)
+    {
+        ASSERT_EQ(std::get<2>(t), MaxSameSubStringAfterKReplace(std::get<0>(t), std::get<1>(t)));
+    }
+}
+
+TEST(MATH, Pow)
+{
+    long long a = 20, m = 50, mod = 1e9 + 7;
+    long long res = 1;
+    for (long long i = 0; i < m; i++)
+    {
+        res *= a;
+        res %= mod;
+    }
+    ASSERT_EQ(PowWithMod(20, 50, mod), res);
+}
+
 TEST(GRAGH, GRAGH_IS_TREE)
 {
     int n = 5;
@@ -92,4 +116,3 @@ int main(int argc, char** argv)
     google::ParseCommandLineFlags(&argc, &argv, true);
     return RUN_ALL_TESTS();
 }
-

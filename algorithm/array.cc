@@ -68,7 +68,8 @@ bool GraghisTree(int n, std::vector<std::vector<int>>& edges)
     for (int i = 0; i < n; i++)
         v[i] = i;
 
-    std::function<int(int)> find = [&v, &find](int x) {
+    std::function<int(int)> find = [&v, &find](int x)
+    {
         if (x == v[x])
             return x;
         return find(v[x]);
@@ -213,7 +214,38 @@ int GetMaxAndResult(vector<int>& nums)
     return nums[start] & nums[start + 1];
 }
 
+int MaxSameSubStringAfterKReplace(std::string& str, int k)
+{
+    int i = 0, j = 0;
+    vector<int> count(256, 0);
+    int maxcount = 0;
+    for (j = 0; j < str.size(); j++)
+    {
+        count[str[j]]++;
+        maxcount = std::max(count[str[j]], maxcount);
+        if (j - i + 1 - maxcount > k)
+        {
+            count[str[i]]--;
+            i++;
+        }
+    }
+    return j - i;
+}
+
+long long PowWithMod(long long a, long long n, int mod)
+{
+    long long ans = 1;
+    while (n)
+    {
+        if (n & 1)
+            ans = ans * a % mod;
+        a *= a; //a自乘
+        a %= mod;
+        n >>= 1; //n往右移一位
+    }
+    return ans;
+}
+
 } // namespace array_alg
 } // namespace algorithm
 } // namespace hl
-
