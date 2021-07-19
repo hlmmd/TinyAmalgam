@@ -45,4 +45,4 @@ private:
 } // namespace common
 } // namespace hl
 
-#endif //TMP_H
+#endif //COMMON_SEQUENCE_PROCESSOR_H
