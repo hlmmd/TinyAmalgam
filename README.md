@@ -29,3 +29,14 @@ sudo vim /etc/fstab
 sudo swapoff /swapfile
 sudo rm /swapfile
 ```
+
+## submodule使用
+
+```bash
+# 子模块添加
+git submodule add https://github.com/hlmmd/hlstl common/hlstl
+# 子模块初始化
+git submodule init
+git submodule update
+git submodule update --init --recursive
+```

@@ -1,0 +1,3 @@
+[submodule "common/hlstl"]
+	path = common/hlstl
+	url = https://github.com/hlmmd/hlstl
