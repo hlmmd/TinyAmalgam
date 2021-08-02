@@ -5,6 +5,14 @@ tiny amalgam
 
 ```bash
 sudo apt install libunwind-dev libgflags-dev libgtest-dev libgoogle-glog-dev
+
+# for gtest
+cd /usr/src/googletest/googletest/
+sudo mkdir build
+cd build
+sudo cmake ..
+sudo make
+sudo cp lib/libgtest* /usr/local/lib
 ```
 
 ## 编译时内存炸了
