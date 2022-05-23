@@ -41,6 +41,7 @@ Env.Append(CCCFLAGS=['-g', '-O3', '-Wall'])
 
 Env.Append(CPPPATH=[currentPath + '/algorithm'])
 Env.Append(LIBPATH =[currentPath + '/algorithm'])
+Env.Append(LIBPATH =[currentPath + '/common/base'])
 
 Export('Env')
 SConscript('common/SConscript', exports=['Env'])
