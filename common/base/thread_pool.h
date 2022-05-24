@@ -19,9 +19,11 @@ public:
 private:
     void Stop()
     {
-        stop_ = true;
+        {
+            std::unique_lock<std::mutex> _(mutex_);
+            stop_ = true;
+        }
         emptyCv_.notify_all();
-        fullCv_.notify_all();
     }
     const int poolSize_;
     bool stop_;

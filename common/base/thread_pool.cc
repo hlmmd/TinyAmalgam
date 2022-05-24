@@ -10,20 +10,18 @@ ThreadPool::ThreadPool(int threadNum, int poolSize) : poolSize_(poolSize),
     for (int i = 0; i < threadNum; i++)
     {
         ThreadPtr pthread = std::make_shared<std::thread>(
-            [this, i]()
+            [this]()
             {
-                while (!stop_)
+                while (true)
                 {
                     TaskPtr pTask = nullptr;
                     {
                         std::unique_lock<std::mutex> _(mutex_);
-                        if (taskQueue_.empty())
-                        {
-                            emptyCv_.wait(_);
-                        }
-                        if (stop_)
+                        emptyCv_.wait(_, [this]()
+                                      { return (!taskQueue_.empty() || stop_); });
+                        if (stop_ && taskQueue_.empty())
                             break;
-                        pTask = taskQueue_.front();
+                        pTask = std::move(taskQueue_.front());
                         taskQueue_.pop();
                         fullCv_.notify_one();
                     }
@@ -47,10 +45,9 @@ void ThreadPool::Submit(TaskPtr pTask)
     if (pTask == nullptr)
         return;
     std::unique_lock<std::mutex> _(mutex_);
-    if (taskQueue_.size() >= poolSize_)
-    {
-        fullCv_.wait(_);
-    }
+
+    fullCv_.wait(_, [this]()
+                 { return stop_ || (taskQueue_.size() < poolSize_); });
     if (stop_)
         return;
     taskQueue_.push(pTask);

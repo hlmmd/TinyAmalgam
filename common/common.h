@@ -17,7 +17,7 @@
 #include <functional>
 #include <mutex>
 #include <thread>
-
+#include <future>
 #include <glog/logging.h>
 
 namespace hl

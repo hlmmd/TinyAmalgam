@@ -21,6 +21,7 @@ void DoSomeThing()
             for (int k = 0; k < size; k++)
             {
                 temp += i * j * k;
+                temp &= 0x11223344;;
             }
         }
     }
@@ -28,10 +29,10 @@ void DoSomeThing()
 
 TEST(ThreadPool, FUNCTEST)
 {
-    int threadNum = 8, threadPoolSize = 100;
+    int threadNum = 16, threadPoolSize = 100;
     std::shared_ptr<ThreadPool> pThreadPool =
         std::make_shared<ThreadPool>(threadNum, threadPoolSize);
-    int taskSize = 1000;
+    int taskSize = 1024;
     std::shared_ptr<CountDownLatch> pCounter = std::make_shared<CountDownLatch>(taskSize);
     Timestamp t;
     t.update();
