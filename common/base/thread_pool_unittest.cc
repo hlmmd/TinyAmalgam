@@ -1,5 +1,6 @@
 #include "count_down_latch.h"
 #include "thread_pool.h"
+#include "shared_ptr.h"
 #include "timestamp.h"
 #include <gflags/gflags.h>
 #include <glog/logging.h>
