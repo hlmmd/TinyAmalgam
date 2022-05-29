@@ -21,3 +21,4 @@ Env.Library(TARGET_LIB, Env.Object(objfiles))
 deplibs.insert(0, TARGET_LIB)
 
 Env.Program('thread_pool_unittest', source=['thread_pool_unittest.cc'], LIBS=deplibs)
+Env.Program('object_pool_unittest', source=['object_pool_unittest.cc'], LIBS=deplibs)

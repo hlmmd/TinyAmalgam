@@ -4,6 +4,7 @@
 #include <stdint.h>
 
 #include <deque>
+#include <list>
 #include <map>
 #include <queue>
 #include <set>
