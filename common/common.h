@@ -3,6 +3,8 @@
 
 #include <stdint.h>
 
+#include <numeric>
+
 #include <deque>
 #include <list>
 #include <map>

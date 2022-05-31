@@ -9,6 +9,7 @@
 ================================================================*/
 
 #include "array.h"
+#include "kahan.h"
 #include "sort.h"
 #include <gflags/gflags.h>
 #include <glog/logging.h>
@@ -18,6 +19,16 @@ using namespace hl;
 using namespace hl::algorithm;
 using namespace hl::algorithm::array_alg;
 using namespace std;
+
+TEST(MATH, KahanSum)
+{
+    vector<float> v(1024 * 1024 * 128, 1.0f);
+    ASSERT_FLOAT_EQ(KahanSum(v), 134217728.0f);
+
+    vector<double> v2(1024 * 1024 * 128, 1.0);
+    ASSERT_DOUBLE_EQ(KahanSum(v2), 134217728.0);
+}
+
 TEST(ARRAY, PredictTheWinner)
 {
     vector<int> nums = {1, 5, 233, 7};
